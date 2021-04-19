@@ -1,0 +1,41 @@
+#pragma once
+#include <iostream>
+#include <Windows.h>
+#include <string>
+
+using namespace std;
+
+string ip; // ip server
+
+void Read_msg(string msg) {
+    cout << "__________Comand_________\n" << endl;
+	
+	if (msg == "/ip") {
+		cout << " ~IP Servera: " << ip << endl;
+	}
+	else if (msg == "/restart") {
+		cout << " ~Restart Servera via:" << endl;
+		for (int i = 10; i > 0; i-- ) {
+			cout << "\n ~" << i ;
+			Sleep(1000);
+		}
+		system("pause");
+	}
+	else if (msg == "/ard") {
+		string echo = "echo ";
+		echo += msg;
+		echo += " > com3";
+		system(echo.c_str());
+		cout << "\n " << echo;
+	}
+	else if (msg == "/cooler_on") {
+          system("echo 9 1 > com4");
+	}
+	else if (msg == "/clooler_off") {
+		system("echo 9 0 > com4");
+	}
+	
+
+	cout << "\n______________________" << endl;
+
+}
